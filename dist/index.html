@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#FFF8F0" />
+    <meta name="description" content="Una noche para brindar, reír y celebrar. Estás invitado al cumpleaños de Valentina." />
+    <title>Valentina · Birthday soirée</title>
+    <link rel="icon" type="image/svg+xml" href="assets/sparkle.svg" />
+    <link rel="preload" href="assets/cormorant-italic.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="config.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <section class="cover" id="cover" aria-labelledby="birthday-name">
+      <header class="cover-header entrance" style="--delay: 0ms">
+        <a class="wordmark" href="./" aria-label="Birthday soirée, inicio">birthday <span>soirée</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg></a>
+        <span class="header-note">UNA NOCHE ESPECIAL</span>
+      </header>
+
+      <div class="cover-composition">
+        <div class="cover-copy">
+          <div class="invitation-kicker entrance" style="--delay: 180ms"><span></span> CELEBREMOS JUNTOS <span></span></div>
+          <p class="intro entrance" style="--delay: 260ms">Una noche para brindar,<br />reír y celebrar.</p>
+          <h1 class="birthday-name entrance" id="birthday-name" data-name style="--delay: 340ms">Valentina</h1>
+          <p class="birthday-age entrance" data-age style="--delay: 420ms">Mis 28</p>
+          <div class="cover-action entrance" style="--delay: 500ms">
+            <button class="invite-button" id="open-invitation" type="button" aria-controls="invitation-content">
+              <span>Estás invitado</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15m-5-5 5 5-5 5" /></svg>
+            </button>
+            <p class="music-hint"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M8 14V5l8-2v9M8 7l8-2" /><ellipse cx="5.5" cy="14.5" rx="2.5" ry="1.8" /><ellipse cx="13.5" cy="12.5" rx="2.5" ry="1.8" /></svg>Un toque y comienza la magia</p>
+          </div>
+        </div>
+
+        <figure class="portrait-composition entrance" style="--delay: 100ms">
+          <svg class="sparkle sparkle-one" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 1c0 10-5 15-15 15 10 0 15 5 15 15 0-10 5-15 15-15C21 16 16 11 16 1Z" /></svg>
+          <div class="portrait-frame">
+            <div class="portrait-crop"><img id="birthday-photo" src="assets/portrait.webp" alt="Retrato de muestra para la invitación de Valentina" width="1024" height="1536" fetchpriority="high" /></div>
+            <svg class="ribbon" viewBox="0 0 150 170" fill="none" aria-hidden="true">
+              <path d="M76 61C61 47 16 18 15 44c-1 23 44 20 61 17ZM77 60c7-23 38-55 49-35 13 25-35 39-49 35Z" />
+              <path d="M75 62c-12 17-25 31-20 56 3 14 3 25-4 39M79 62c6 20 33 20 30 48-2 15-5 28 3 42" />
+              <path d="M73 56c-4 5-1 11 5 11 5 0 8-6 5-10-2-4-7-5-10-1ZM71 58C51 37 23 30 19 43m61 15c14-17 39-28 45-30M70 69c-11 23-14 33-10 48m24-50c6 17 28 29 21 44" />
+            </svg>
+          </div>
+          <svg class="sparkle sparkle-two" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 1c0 10-5 15-15 15 10 0 15 5 15 15 0-10 5-15 15-15C21 16 16 11 16 1Z" /></svg>
+          <figcaption class="portrait-caption">UN NUEVO AÑO. MIL NUEVOS RECUERDOS.</figcaption>
+        </figure>
+      </div>
+
+      <footer class="cover-footer entrance" style="--delay: 600ms"><span class="footer-line"></span><span>BRINDEMOS POR LO QUE VIENE</span><span class="footer-line"></span></footer>
+    </section>
+
+    <!-- Solo es el destino de apertura. Añade las futuras secciones dentro de este main. -->
+    <main class="invitation-content" id="invitation-content" hidden tabindex="-1" aria-label="Contenido de la invitación">
+      <div class="invitation-shell" id="invitation-slot">
+        <svg class="shell-sparkle" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 1c0 10-5 15-15 15 10 0 15 5 15 15 0-10 5-15 15-15C21 16 16 11 16 1Z" /></svg>
+        <p class="shell-kicker">BIRTHDAY SOIRÉE</p>
+        <h2 data-name>Valentina</h2>
+        <p class="birthday-age" data-age>Mis 28</p>
+      </div>
+      <button class="back-button" id="back-to-cover" type="button"><span aria-hidden="true">←</span> Volver a la portada</button>
+    </main>
+
+    <button class="sound-button" id="sound-toggle" type="button" aria-label="Pausar música" aria-pressed="true" hidden>
+      <svg class="sound-playing" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m11 5-5 4H3v6h3l5 4V5ZM15 8c3 2 3 6 0 8m3-11c5 4 5 10 0 14" /></svg>
+      <svg class="sound-muted" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m11 5-5 4H3v6h3l5 4V5Zm5 4 5 6m0-6-5 6" /></svg>
+    </button>
+    <p class="sr-only" id="audio-status" role="status" aria-live="polite"></p>
+    <audio id="birthday-music" loop preload="none"></audio>
+    <noscript><p class="no-script">Activa JavaScript para abrir la invitación con música.</p></noscript>
+  </body>
+</html>
