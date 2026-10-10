@@ -11,8 +11,11 @@
     <link rel="stylesheet" href="styles.css" />
     <script src="config.js" defer></script>
     <script src="app.js" defer></script>
+    <script src="welcome.js" type="module"></script>
   </head>
   <body>
+    <div class="ambient" id="ambient" aria-hidden="true"><span class="glow glow-one"></span><span class="glow glow-two"></span><span class="glow glow-three"></span></div>
+
     <section class="cover" id="cover" aria-labelledby="birthday-name">
       <header class="cover-header entrance" style="--delay: 0ms">
         <a class="wordmark" href="./" aria-label="Birthday soirée, inicio">birthday <span>soirée</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg></a>
@@ -23,11 +26,11 @@
         <div class="cover-copy">
           <div class="invitation-kicker entrance" style="--delay: 180ms"><span></span> CELEBREMOS JUNTOS <span></span></div>
           <p class="intro entrance" style="--delay: 260ms">Una noche para brindar,<br />reír y celebrar.</p>
-          <h1 class="birthday-name entrance" id="birthday-name" data-name style="--delay: 340ms">Valentina</h1>
+          <h1 class="birthday-name entrance shimmer" id="birthday-name" data-name style="--delay: 340ms">Valentina</h1>
           <p class="birthday-age entrance" data-age style="--delay: 420ms">Mis 28</p>
           <div class="cover-action entrance" style="--delay: 500ms">
             <button class="invite-button" id="open-invitation" type="button" aria-controls="invitation-content">
-              <span>Estás invitado</span>
+              <span class="invite-label">Estás invitado</span>
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15m-5-5 5 5-5 5" /></svg>
             </button>
             <p class="music-hint"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M8 14V5l8-2v9M8 7l8-2" /><ellipse cx="5.5" cy="14.5" rx="2.5" ry="1.8" /><ellipse cx="13.5" cy="12.5" rx="2.5" ry="1.8" /></svg>Un toque y comienza la magia</p>
@@ -36,14 +39,15 @@
 
         <figure class="portrait-composition entrance" style="--delay: 100ms">
           <svg class="sparkle sparkle-one" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 1c0 10-5 15-15 15 10 0 15 5 15 15 0-10 5-15 15-15C21 16 16 11 16 1Z" /></svg>
-          <div class="portrait-frame">
+          <div class="portrait-frame" id="portrait-frame">
             <div class="portrait-crop"><img id="birthday-photo" src="assets/portrait.webp" alt="Retrato de muestra para la invitación de Valentina" width="1024" height="1536" fetchpriority="high" /></div>
             <svg class="ribbon" viewBox="0 0 150 170" fill="none" aria-hidden="true">
-              <path d="M76 61C61 47 16 18 15 44c-1 23 44 20 61 17ZM77 60c7-23 38-55 49-35 13 25-35 39-49 35Z" />
-              <path d="M75 62c-12 17-25 31-20 56 3 14 3 25-4 39M79 62c6 20 33 20 30 48-2 15-5 28 3 42" />
-              <path d="M73 56c-4 5-1 11 5 11 5 0 8-6 5-10-2-4-7-5-10-1ZM71 58C51 37 23 30 19 43m61 15c14-17 39-28 45-30M70 69c-11 23-14 33-10 48m24-50c6 17 28 29 21 44" />
+              <path pathLength="1" d="M76 61C61 47 16 18 15 44c-1 23 44 20 61 17ZM77 60c7-23 38-55 49-35 13 25-35 39-49 35Z" />
+              <path pathLength="1" d="M75 62c-12 17-25 31-20 56 3 14 3 25-4 39M79 62c6 20 33 20 30 48-2 15-5 28 3 42" />
+              <path pathLength="1" d="M73 56c-4 5-1 11 5 11 5 0 8-6 5-10-2-4-7-5-10-1ZM71 58C51 37 23 30 19 43m61 15c14-17 39-28 45-30M70 69c-11 23-14 33-10 48m24-50c6 17 28 29 21 44" />
             </svg>
           </div>
+          <svg class="sparkle sparkle-three" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 1c0 10-5 15-15 15 10 0 15 5 15 15 0-10 5-15 15-15C21 16 16 11 16 1Z" /></svg>
           <svg class="sparkle sparkle-two" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 1c0 10-5 15-15 15 10 0 15 5 15 15 0-10 5-15 15-15C21 16 16 11 16 1Z" /></svg>
           <figcaption class="portrait-caption">UN NUEVO AÑO. MIL NUEVOS RECUERDOS.</figcaption>
         </figure>
@@ -52,21 +56,46 @@
       <footer class="cover-footer entrance" style="--delay: 600ms"><span class="footer-line"></span><span>BRINDEMOS POR LO QUE VIENE</span><span class="footer-line"></span></footer>
     </section>
 
-    <!-- Solo es el destino de apertura. Añade las futuras secciones dentro de este main. -->
+    <!-- Segunda sección. Las futuras secciones se añadirán después de la bienvenida. -->
     <main class="invitation-content" id="invitation-content" hidden tabindex="-1" aria-label="Contenido de la invitación">
-      <div class="invitation-shell" id="invitation-slot">
-        <svg class="shell-sparkle" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 1c0 10-5 15-15 15 10 0 15 5 15 15 0-10 5-15 15-15C21 16 16 11 16 1Z" /></svg>
-        <p class="shell-kicker">BIRTHDAY SOIRÉE</p>
-        <h2 data-name>Valentina</h2>
-        <p class="birthday-age" data-age>Mis 28</p>
-      </div>
-      <button class="back-button" id="back-to-cover" type="button"><span aria-hidden="true">←</span> Volver a la portada</button>
+      <section class="welcome-section" id="welcome" aria-labelledby="welcome-title">
+        <div class="welcome-composition" id="invitation-slot">
+          <p class="welcome-kicker welcome-reveal" style="--welcome-delay: 0ms">Se acerca mi cumpleaños</p>
+          <h2 class="welcome-title welcome-reveal" id="welcome-title" style="--welcome-delay: 100ms">¡Y quiero celebrarlo <span>contigo!</span></h2>
+          <p class="welcome-message welcome-reveal" style="--welcome-delay: 200ms">Cumplir un año más merece una noche especial. Me encantaría compartir contigo las risas, los brindis y los recuerdos de esta celebración.</p>
+
+          <div class="welcome-illustration welcome-reveal" style="--welcome-delay: 270ms" aria-hidden="true">
+            <svg class="toast-glasses" viewBox="0 0 160 128" fill="none">
+              <g transform="rotate(-17 54 57)"><path d="M36 13h37l-3 40c-.8 11-7 18-15.5 18S40 64 39 53L36 13Z"/><path d="M39 43h31M54.5 71v37m-16 3c8-4 23-4 32 0"/><path d="M44 21l1 17"/></g>
+              <g transform="rotate(17 106 57)"><path d="M87 13h37l-3 40c-.8 11-7 18-15.5 18S91 64 90 53L87 13Z"/><path d="M90 43h31M105.5 71v37m-16 3c8-4 23-4 32 0"/><path d="M95 21l1 17"/></g>
+              <path class="toast-rays" d="M80 1v7m-11-4 3 5m19-5-3 5"/>
+            </svg>
+            <svg class="welcome-star welcome-star-one" viewBox="0 0 24 24"><path d="M12 1c0 7.3-3.7 11-11 11 7.3 0 11 3.7 11 11 0-7.3 3.7-11 11-11-7.3 0-11-3.7-11-11Z"/></svg>
+            <svg class="welcome-star welcome-star-two" viewBox="0 0 24 24"><path d="M12 1c0 7.3-3.7 11-11 11 7.3 0 11 3.7 11 11 0-7.3 3.7-11 11-11-7.3 0-11-3.7-11-11Z"/></svg>
+          </div>
+
+          <div class="countdown-area welcome-reveal" style="--welcome-delay: 350ms">
+            <div class="countdown" id="countdown" role="group" aria-label="Cuenta regresiva para el cumpleaños de Valentina" aria-live="off">
+              <div class="countdown-unit"><span class="countdown-value" data-countdown="days">00</span><span class="countdown-label">Días</span></div>
+              <div class="countdown-unit"><span class="countdown-value" data-countdown="hours">00</span><span class="countdown-label">Horas</span></div>
+              <div class="countdown-unit"><span class="countdown-value" data-countdown="minutes">00</span><span class="countdown-label">Minutos</span></div>
+              <div class="countdown-unit"><span class="countdown-value" data-countdown="seconds">00</span><span class="countdown-label">Segundos</span></div>
+            </div>
+            <p class="countdown-complete" id="countdown-complete" role="status" aria-live="polite" hidden></p>
+          </div>
+
+          <p class="welcome-closing welcome-reveal" style="--welcome-delay: 430ms">Que comience la cuenta para una noche inolvidable.</p>
+        </div>
+        <button class="back-button welcome-back" id="back-to-cover" type="button"><span aria-hidden="true">←</span> Volver a la portada</button>
+      </section>
     </main>
 
     <button class="sound-button" id="sound-toggle" type="button" aria-label="Pausar música" aria-pressed="true" hidden>
+      <span class="sound-ring" aria-hidden="true"></span>
       <svg class="sound-playing" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m11 5-5 4H3v6h3l5 4V5ZM15 8c3 2 3 6 0 8m3-11c5 4 5 10 0 14" /></svg>
       <svg class="sound-muted" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m11 5-5 4H3v6h3l5 4V5Zm5 4 5 6m0-6-5 6" /></svg>
     </button>
+    <div class="veil" id="veil" aria-hidden="true"><svg class="veil-sparkle" viewBox="0 0 32 32"><path d="M16 1c0 10-5 15-15 15 10 0 15 5 15 15 0-10 5-15 15-15C21 16 16 11 16 1Z" /></svg></div>
     <p class="sr-only" id="audio-status" role="status" aria-live="polite"></p>
     <audio id="birthday-music" loop preload="none"></audio>
     <noscript><p class="no-script">Activa JavaScript para abrir la invitación con música.</p></noscript>
