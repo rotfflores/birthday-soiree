@@ -15,6 +15,7 @@
     <script src="welcome.js" defer></script>
     <script src="event-details.js" defer></script>
     <script src="dress-code.js" defer></script>
+    <script src="weather.js" defer></script>
     <script src="rsvp.js" defer></script>
     <script src="gallery.js" defer></script>
     <script src="farewell.js" defer></script>
@@ -177,6 +178,31 @@
             <span id="dress-code-color-note">Ven del color que más te guste.</span>
           </p>
           <p class="dress-closing dress-reveal" style="--dress-delay: 560ms">Tu mejor accesorio: las ganas de celebrar.</p>
+        </div>
+      </section>
+
+      <!-- Qué ponerse según el clima. Ciudad, coordenadas, clima típico y textos en config.js. -->
+      <section class="weather-section" id="weather" aria-labelledby="weather-title">
+        <div class="weather-sparkles" aria-hidden="true"><svg viewBox="0 0 20 20" style="--i:0"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg><svg viewBox="0 0 20 20" style="--i:1"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg><svg viewBox="0 0 20 20" style="--i:2"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg><svg viewBox="0 0 20 20" style="--i:3"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg><svg viewBox="0 0 20 20" style="--i:4"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg><svg viewBox="0 0 20 20" style="--i:5"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg></div>
+        <div class="weather-composition">
+          <p class="weather-kicker weather-reveal" style="--weather-delay: 0ms">El clima de esa noche</p>
+          <h2 class="weather-title weather-reveal" id="weather-title" style="--weather-delay: 90ms">¿Qué me pongo?</h2>
+          <div class="weather-card weather-reveal" style="--weather-delay: 180ms">
+            <svg class="weather-icon" viewBox="0 0 120 90" fill="none" aria-hidden="true">
+              <path class="weather-moon" pathLength="1" d="M78 8a22 22 0 1 0 24 30 18 18 0 0 1-24-30Z" />
+              <path class="weather-cloud" pathLength="1" d="M24 80h46a13 13 0 0 0 1-26 19 19 0 0 0-36-4 12 12 0 0 0-11 30Z" />
+              <path class="weather-star" pathLength="1" d="M108 54v8m-4-4h8M28 26v6m-3-3h6" />
+            </svg>
+            <p class="weather-temp"><span id="weather-temp">12–17</span><small>°C</small></p>
+            <p class="weather-mood" id="weather-mood">Noche fresca</p>
+            <p class="weather-meta"><span id="weather-city">Ciudad de México</span> · <span id="weather-source">clima típico de noviembre</span></p>
+            <p class="weather-rain" id="weather-rain">Probabilidad de lluvia: 10%</p>
+          </div>
+          <ul class="weather-tips" id="weather-tips">
+            <li class="weather-tip weather-reveal" style="--weather-delay: 280ms"><span class="weather-tip-icon" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M240.37,172.8,138,96l25.59-19.2A6,6,0,0,0,166,72a38,38,0,1,0-76,0,6,6,0,0,0,12,0,26,26,0,0,1,51.82-2.88l-29.32,22-.21.16L15.63,172.8A14,14,0,0,0,24,198H232a14,14,0,0,0,8.39-25.2Zm-6.5,11.83A1.85,1.85,0,0,1,232,186H24a2,2,0,0,1-1.19-3.6L128,103.5l105.17,78.9A1.85,1.85,0,0,1,233.87,184.63Z" /></svg></span><span>Un chal, blazer o saco ligero sobre tu look de cóctel será perfecto para la terraza.</span></li>
+            <li class="weather-tip weather-reveal" style="--weather-delay: 360ms"><span class="weather-tip-icon" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M230.53,158.14,179,146.53,68.24,35.76a6,6,0,0,0-8.67.19C37.92,59.62,26,89.47,26,120v72a14,14,0,0,0,14,14H72a14,14,0,0,0,14-14V139.65a115,115,0,0,1,51.74,57.69,13.92,13.92,0,0,0,13,8.66H240a14,14,0,0,0,14-14v-4.73A29.73,29.73,0,0,0,230.53,158.14ZM74,192a2,2,0,0,1-2,2H40a2,2,0,0,1-2-2V126.18A112.75,112.75,0,0,1,74,134Zm168,0a2,2,0,0,1-2,2H150.72a2,2,0,0,1-1.86-1.18,126.53,126.53,0,0,0-45.58-56.65,125.13,125.13,0,0,0-65.12-22C39.47,90.66,48.6,67.83,64.31,48.79L171.76,156.24a6,6,0,0,0,2.92,1.61l53.23,12A17.81,17.81,0,0,1,242,187.31Z" /></svg></span><span>Hay jardín: tacones anchos, plataformas o flats elegantes serán tus aliados.</span></li>
+          </ul>
+          <p class="weather-closing weather-reveal" id="weather-closing" style="--weather-delay: 440ms">Lo importante: que vengas cómoda y lista para bailar.</p>
         </div>
       </section>
       <!-- Quinta sección: confirmación de asistencia. Fecha límite, nombre y edad en config.js. La confirmación solo se muestra en pantalla. -->

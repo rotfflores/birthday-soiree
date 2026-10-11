@@ -5,6 +5,8 @@
 - `Cormorant Garamond` y `DM Sans`: descargadas de Google Fonts y alojadas localmente; licencias SIL OFL incluidas junto a las fuentes.
 - `dist/assets/watercolor.webp`: fondo de acuarela rosa empolvado proporcionado por Obed (en móvil y pantallas verticales). `watercolor-tl.webp` y `watercolor-br.webp` son recortes de sus esquinas para pantallas horizontales.
 - Ilustraciones del código de vestimenta (vestido, camisa y pantalón): iconos “thin” de Phosphor Icons 2.1.1 (`@phosphor-icons/core`), licencia MIT en `dist/assets/LICENSE-Phosphor.txt`. Están incrustados como SVG en `index.html`.
+- `dist/assets/dancing-queen.mp3`: canción de fondo ("Dancing Queen", ABBA) proporcionada por Obed. `soiree.mp3` queda como respaldo y ya no se usa.
+- Iconos de la sección del clima (gancho, paraguas y tacón): iconos "light" de Phosphor Icons 2.1.1, misma licencia MIT. Están en `dist/weather.js` y en `index.html`.
 - Moño, destellos e iconos: SVG originales en el HTML.
 
 ## Prompt del retrato (herramienta integrada, sin CLI)
