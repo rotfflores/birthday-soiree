@@ -1,6 +1,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { getCountdown } from "../dist/countdown.js";
+import "../dist/countdown.js";
+
+const { getCountdown } = globalThis.BirthdayCountdown;
 
 test("descompone días, horas, minutos y segundos sin perder unidades", () => {
   const now = Date.parse("2026-10-10T12:00:00-06:00");

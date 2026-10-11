@@ -1,10 +1,12 @@
 # Birthday soirée
 
-Portada y bienvenida de cumpleaños en HTML, CSS y JavaScript, sin dependencias. La paleta es marfil `#FFF8F0`, rosa empolvado `#D8A7B1` y cereza `#722F46`.
+Portada, bienvenida y detalles de la celebración en HTML, CSS y JavaScript, sin dependencias. La paleta es marfil `#FFF8F0`, rosa empolvado `#D8A7B1` y cereza `#722F46`.
 
 ## Vista local
 
 Desde esta carpeta ejecuta `npm run dev` y abre `http://127.0.0.1:4173`.
+
+También puedes abrir `dist/index.html` directamente. La tercera sección se ha desarrollado únicamente en los archivos locales; no se ha subido ni publicado.
 
 ## Personalizar
 
@@ -14,15 +16,29 @@ La música es una pieza instrumental original de piano. Puede sustituirse por un
 
 ## Próximas secciones
 
-Se han desarrollado únicamente la portada y la segunda sección de bienvenida con cuenta regresiva. La bienvenida ocupa `section#welcome` dentro de `main#invitation-content` y se revela al pulsar **Estás invitado**. Añade las futuras secciones después de `#welcome`. No se han agregado ubicación, RSVP ni detalles del evento.
+Se han desarrollado la portada, la bienvenida con cuenta regresiva y la tercera sección de fecha, hora y lugar. Las dos últimas están dentro de `main#invitation-content` y se revelan al pulsar **Estás invitado**. Los detalles ocupan `section#event-details`, después de `#welcome`. Añade futuras secciones después de `#event-details`. No se ha agregado RSVP ni otras secciones.
 
 ## Cuenta regresiva
 
-En `dist/config.js`, cambia `birthdayDate`. La fecha **de ejemplo** es `2026-11-14T20:00:00-06:00`: 14 de noviembre de 2026, 20:00, Ciudad de México. El desfase `-06:00` fija el instante para todos los visitantes, aunque estén en otra zona horaria. Usa una fecha ISO con `Z` o un desfase explícito. Esta fecha no se muestra como información del evento.
+En `dist/config.js`, cambia `birthdayDate`. La fecha **de ejemplo** es `2026-11-14T20:00:00-06:00`: 14 de noviembre de 2026, 20:00, Ciudad de México. El desfase `-06:00` fija el instante para todos los visitantes, aunque estén en otra zona horaria. Usa una fecha ISO con `Z` o un desfase explícito. La tercera sección y el calendario comparten esta misma fecha; no hay que actualizarla en el HTML.
 
 El contador calcula días, horas, minutos y segundos usando el reloj actual en cada actualización. Se inicia al abrir y se sincroniza al regresar de una pestaña inactiva. Al llegar a cero, se sustituye por **¡Hoy celebramos!**; nunca muestra números negativos. `npm run check` valida la lógica, el límite de cero y la zona horaria.
 
 La bienvenida entra con un desvanecimiento suave al aparecer en pantalla y permanece visible sin animación si el dispositivo solicita movimiento reducido. Las copas y los dos destellos son ilustraciones SVG originales.
+
+## Fecha, hora y lugar
+
+Configura estos campos en `dist/config.js`:
+
+- `birthdayDate`: fecha y hora de inicio compartidas por el contador, la tercera sección y el calendario.
+- `eventTimeZone`: zona IANA de la celebración, inicialmente `America/Mexico_City`. La hora se presenta en esta zona, independientemente de la zona del visitante. Si cambias de ciudad, ajusta también el desfase de `birthdayDate`.
+- `venueName` y `venueAddress`: nombre del lugar y dirección completa. Admiten textos largos y saltos de línea. Inicialmente se muestra **Lugar por confirmar / Dirección por confirmar**.
+- `mapsUrl`: enlace HTTPS editable de Google Maps. Si queda vacío y existe una dirección, se genera una búsqueda en Maps con el lugar y la dirección. Si ambos faltan, **Cómo llegar** conserva su diseño y permanece inactivo hasta configurarlo.
+- `calendarDurationMinutes`: duración de ejemplo para el evento de calendario, inicialmente 180 minutos; no se muestra como hora de cierre en la invitación.
+
+**Cómo llegar** abre Maps en una pestaña nueva. **Guardar en mi calendario** abre una plantilla de Google Calendar con el nombre, la fecha, la hora, la ubicación y la zona horaria configuradas; el invitado decide guardarla. Se emplean instantes UTC y los parámetros `stz`/`etz` de la [plantilla oficial de Google Calendar](https://developers.google.com/workspace/calendar/api/concepts/inviting-attendees-to-events#provide_a_link_for_users_to_add_the_event), para conservar el inicio incluso cuando cambia el día en UTC o hay cambio de horario.
+
+La sección usa un fondo marfil, un borde cereza y un moño SVG. Aparece suavemente al desplazarse y se muestra sin animación cuando está activada la preferencia de movimiento reducido. `npm run check` verifica la sincronización, las zonas horarias, la codificación de enlaces y los datos inválidos.
 
 ## Animación
 

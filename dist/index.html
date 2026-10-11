@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#FFF8F0" />
+    <meta name="theme-color" content="#FDF5EC" />
     <meta name="description" content="Una noche para brindar, reír y celebrar. Estás invitado al cumpleaños de Valentina." />
     <title>Valentina · Birthday soirée</title>
     <link rel="icon" type="image/svg+xml" href="assets/sparkle.svg" />
@@ -11,9 +11,16 @@
     <link rel="stylesheet" href="styles.css" />
     <script src="config.js" defer></script>
     <script src="app.js" defer></script>
-    <script src="welcome.js" type="module"></script>
+    <script src="countdown.js" defer></script>
+    <script src="welcome.js" defer></script>
+    <script src="event-details.js" defer></script>
+    <script src="dress-code.js" defer></script>
+    <script src="rsvp.js" defer></script>
+    <script src="gallery.js" defer></script>
+    <script src="farewell.js" defer></script>
   </head>
   <body>
+    <div class="paper" aria-hidden="true"></div>
     <div class="ambient" id="ambient" aria-hidden="true"><span class="glow glow-one"></span><span class="glow glow-two"></span><span class="glow glow-three"></span></div>
 
     <section class="cover" id="cover" aria-labelledby="birthday-name">
@@ -56,18 +63,18 @@
       <footer class="cover-footer entrance" style="--delay: 600ms"><span class="footer-line"></span><span>BRINDEMOS POR LO QUE VIENE</span><span class="footer-line"></span></footer>
     </section>
 
-    <!-- Segunda sección. Las futuras secciones se añadirán después de la bienvenida. -->
+    <!-- Contenido que se revela al abrir la invitación. -->
     <main class="invitation-content" id="invitation-content" hidden tabindex="-1" aria-label="Contenido de la invitación">
       <section class="welcome-section" id="welcome" aria-labelledby="welcome-title">
         <div class="welcome-composition" id="invitation-slot">
-          <p class="welcome-kicker welcome-reveal" style="--welcome-delay: 0ms">Se acerca mi cumpleaños</p>
+          <p class="welcome-kicker welcome-reveal" style="--welcome-delay: 0ms"><span>Se acerca mi cumpleaños</span></p>
           <h2 class="welcome-title welcome-reveal" id="welcome-title" style="--welcome-delay: 100ms">¡Y quiero celebrarlo <span>contigo!</span></h2>
           <p class="welcome-message welcome-reveal" style="--welcome-delay: 200ms">Cumplir un año más merece una noche especial. Me encantaría compartir contigo las risas, los brindis y los recuerdos de esta celebración.</p>
 
           <div class="welcome-illustration welcome-reveal" style="--welcome-delay: 270ms" aria-hidden="true">
             <svg class="toast-glasses" viewBox="0 0 160 128" fill="none">
-              <g transform="rotate(-17 54 57)"><path d="M36 13h37l-3 40c-.8 11-7 18-15.5 18S40 64 39 53L36 13Z"/><path d="M39 43h31M54.5 71v37m-16 3c8-4 23-4 32 0"/><path d="M44 21l1 17"/></g>
-              <g transform="rotate(17 106 57)"><path d="M87 13h37l-3 40c-.8 11-7 18-15.5 18S91 64 90 53L87 13Z"/><path d="M90 43h31M105.5 71v37m-16 3c8-4 23-4 32 0"/><path d="M95 21l1 17"/></g>
+              <g transform="rotate(-17 54 57)"><g class="glass glass-left"><path pathLength="1" d="M36 13h37l-3 40c-.8 11-7 18-15.5 18S40 64 39 53L36 13Z"/><path pathLength="1" d="M39 43h31M54.5 71v37m-16 3c8-4 23-4 32 0"/><path pathLength="1" d="M44 21l1 17"/></g></g>
+              <g transform="rotate(17 106 57)"><g class="glass glass-right"><path pathLength="1" d="M87 13h37l-3 40c-.8 11-7 18-15.5 18S91 64 90 53L87 13Z"/><path pathLength="1" d="M90 43h31M105.5 71v37m-16 3c8-4 23-4 32 0"/><path pathLength="1" d="M95 21l1 17"/></g></g>
               <path class="toast-rays" d="M80 1v7m-11-4 3 5m19-5-3 5"/>
             </svg>
             <svg class="welcome-star welcome-star-one" viewBox="0 0 24 24"><path d="M12 1c0 7.3-3.7 11-11 11 7.3 0 11 3.7 11 11 0-7.3 3.7-11 11-11-7.3 0-11-3.7-11-11Z"/></svg>
@@ -87,6 +94,181 @@
           <p class="welcome-closing welcome-reveal" style="--welcome-delay: 430ms">Que comience la cuenta para una noche inolvidable.</p>
         </div>
         <button class="back-button welcome-back" id="back-to-cover" type="button"><span aria-hidden="true">←</span> Volver a la portada</button>
+      </section>
+      <!-- Tercera sección. Datos editables en config.js; fecha compartida con el contador. -->
+      <section class="event-section" id="event-details" aria-labelledby="event-title">
+        <div class="event-sparkles" aria-hidden="true"><svg viewBox="0 0 20 20" style="--i:0"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg><svg viewBox="0 0 20 20" style="--i:1"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg><svg viewBox="0 0 20 20" style="--i:2"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg><svg viewBox="0 0 20 20" style="--i:3"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg><svg viewBox="0 0 20 20" style="--i:4"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg><svg viewBox="0 0 20 20" style="--i:5"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg><svg viewBox="0 0 20 20" style="--i:6"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg><svg viewBox="0 0 20 20" style="--i:7"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg><svg viewBox="0 0 20 20" style="--i:8"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg><svg viewBox="0 0 20 20" style="--i:9"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg></div>
+        <div class="event-paper">
+          <span class="event-frame" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <header class="event-heading event-reveal" style="--event-delay: 0ms">
+            <svg class="event-bow" viewBox="0 0 120 90" fill="none" aria-hidden="true">
+              <path pathLength="1" d="M59 34C48 23 16 6 13 19c-4 17 27 22 46 15Zm3 0C72 22 99 7 106 19c8 16-24 21-44 15Z" />
+              <path pathLength="1" d="M58 37C53 50 41 62 37 82m26-45c5 16 18 23 22 44M57 30c-3 4-2 9 3 10 5 0 8-4 6-8-2-4-6-5-9-2Z" />
+              <path pathLength="1" d="M55 33C43 24 25 16 17 19m48 14c13-9 29-16 36-14M55 41c-3 11-11 21-13 33m24-33c4 11 12 21 14 32" />
+            </svg>
+            <h2 class="event-title" id="event-title">Tenemos una cita</h2>
+            <p class="event-subtitle">Una noche de música, brindis<br class="event-subtitle-break" /> y buena compañía.</p>
+          </header>
+
+          <div class="event-date-block event-reveal" style="--event-delay: 100ms">
+            <div class="event-medallion">
+              <svg class="event-ring" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="event-ring-path" d="M100 100m-86 0a86 86 0 1 1 172 0a86 86 0 1 1 -172 0" /></defs><circle cx="100" cy="100" r="97" /><circle cx="100" cy="100" r="75" /><text textLength="530" lengthAdjust="spacing"><textPath href="#event-ring-path" startOffset="0">RESERVA LA FECHA ✦ RESERVA LA FECHA ✦ RESERVA LA FECHA ✦</textPath></text></svg>
+              <span class="event-orbit" aria-hidden="true"><i></i></span>
+            <time class="event-date" id="event-date" datetime="2026-11-14T20:00:00-06:00" aria-label="14 de noviembre de 2026">
+              <span class="event-day" id="event-day">14</span>
+              <span class="event-month" id="event-month">Noviembre</span>
+              <span class="event-year" id="event-year">2026</span>
+            </time>
+            </div>
+            <p class="event-time">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 6.5V12l3.5 2" /></svg>
+              <time id="event-time" datetime="2026-11-14T20:00:00-06:00">20:00 h</time>
+            </p>
+          </div>
+
+          <div class="event-divider event-reveal" style="--event-delay: 170ms" aria-hidden="true"><span></span><svg viewBox="0 0 20 20"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg><span></span></div>
+
+          <div class="event-location event-reveal" style="--event-delay: 230ms">
+            <svg class="event-pin" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z" /><circle cx="12" cy="10" r="2.3" /></svg>
+            <h3 class="event-venue" id="event-venue">Lugar por confirmar</h3>
+            <p class="event-address" id="event-address">Dirección por confirmar</p>
+          </div>
+
+          <div class="event-actions event-reveal" style="--event-delay: 300ms">
+            <a class="event-maps" id="event-maps" target="_blank" rel="noopener noreferrer" aria-disabled="true" aria-describedby="maps-status">
+              <span>Cómo llegar</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10" /></svg>
+            </a>
+            <span class="sr-only" id="maps-status">La ubicación se añadirá cuando se confirme el lugar.</span>
+            <a class="event-calendar" id="event-calendar" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="6" width="16" height="15" rx="2" /><path d="M8 3v6m8-6v6M4 11h16m-12 5h3" /></svg>
+              <span>Guardar en mi calendario</span>
+            </a>
+          </div>
+
+          <p class="event-closing event-reveal" style="--event-delay: 370ms">Reserva la fecha,<br />yo pongo la celebración.</p>
+        </div>
+      </section>
+      <!-- Cuarta sección: código de vestimenta. Indicación, explicación y nota de color editables en config.js. -->
+      <section class="dress-section" id="dress-code" aria-labelledby="dress-title">
+        <div class="dress-sparkles" aria-hidden="true"><svg viewBox="0 0 20 20" style="--i:0"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg><svg viewBox="0 0 20 20" style="--i:1"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg><svg viewBox="0 0 20 20" style="--i:2"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg><svg viewBox="0 0 20 20" style="--i:3"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg><svg viewBox="0 0 20 20" style="--i:4"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg><svg viewBox="0 0 20 20" style="--i:5"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg><svg viewBox="0 0 20 20" style="--i:6"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg><svg viewBox="0 0 20 20" style="--i:7"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg></div>
+        <div class="dress-composition">
+          <p class="dress-kicker dress-reveal" style="--dress-delay: 0ms"><span>Para esta noche especial</span></p>
+          <h2 class="dress-title dress-reveal" id="dress-title" style="--dress-delay: 90ms">Un toque de glamour</h2>
+          <p class="dress-label dress-reveal" style="--dress-delay: 170ms">Código de vestimenta</p>
+          <p class="dress-code dress-reveal" style="--dress-delay: 240ms">
+            <svg class="dress-code-star" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg>
+            <span id="dress-code-value">Cóctel</span>
+            <svg class="dress-code-star" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg>
+          </p>
+          <p class="dress-description dress-reveal" id="dress-code-description" style="--dress-delay: 320ms">Vestido, conjunto elegante o camisa con pantalón de vestir. Elige un look que te haga sentir increíble y te permita disfrutar la noche.</p>
+
+          <div class="dress-illustrations dress-reveal" style="--dress-delay: 400ms" aria-hidden="true">
+            <div class="dress-figure dress-figure-dress">
+              <svg viewBox="0 0 256 330" fill="currentColor"><g transform="translate(-12 30) scale(1.1)"><path pathLength="1" d="M211,211.27l-.06-.12-46.41-98.86,21.68-34,0-.1a11.94,11.94,0,0,0,0-12.34l-.15-.24L164,34V8a4,4,0,0,0-8,0V33.82l-6.13,7.67a28,28,0,0,1-43.74,0L100,33.82V8a4,4,0,0,0-8,0V34L69.86,65.59l-.15.24a11.94,11.94,0,0,0,0,12.34.93.93,0,0,1,.05.1l21.68,34L45,211.15l-.06.12A12,12,0,0,0,56,228H200a12,12,0,0,0,11-16.73ZM76.54,74a4,4,0,0,1,0-4L96.21,41.9l3.68,4.59a36,36,0,0,0,56.22,0l3.68-4.59L179.49,70a4,4,0,0,1,0,4l-21.65,34H98.19ZM203.33,218.2A3.94,3.94,0,0,1,200,220H56a3.94,3.94,0,0,1-3.33-1.8,3.89,3.89,0,0,1-.36-3.72L98.54,116h58.92l46.23,98.48A3.89,3.89,0,0,1,203.33,218.2Z"/></g></svg>
+            </div>
+            <div class="dress-figure dress-figure-suit">
+              <svg viewBox="0 0 256 330" fill="currentColor"><g transform="translate(43 0) scale(.66)"><path pathLength="1" d="M200,44H177.66L162.83,29.17h0A4,4,0,0,0,160,28H96a4,4,0,0,0-2.83,1.17h0L78.34,44H56A12,12,0,0,0,44,56V208a12,12,0,0,0,12,12H200a12,12,0,0,0,12-12V56A12,12,0,0,0,200,44ZM128,72.79,103.47,36h49.06Zm32.62-34.51L172,49.66V104a4,4,0,0,1-2.3,3.63,3.93,3.93,0,0,1-4.21-.51l-32.2-27.82ZM84,49.66,95.38,38.28l27.33,41-32.17,27.8A4,4,0,0,1,84,104ZM52,208V56a4,4,0,0,1,4-4H76v52a11.89,11.89,0,0,0,6.91,10.87A12.08,12.08,0,0,0,88,116a11.88,11.88,0,0,0,7.65-2.8l.06,0L124,88.74V212H56A4,4,0,0,1,52,208Zm152,0a4,4,0,0,1-4,4H132V88.74l28.32,24.46A11.9,11.9,0,0,0,168,116a12.08,12.08,0,0,0,5.12-1.15A11.89,11.89,0,0,0,180,104V52h20a4,4,0,0,1,4,4Z"/></g><g transform="translate(43 150) scale(.66)"><path pathLength="1" d="M219.91,214.51l-22-176A12,12,0,0,0,186,28H70A12,12,0,0,0,58.09,38.51l-22,176A12,12,0,0,0,48,228H88.69a12,12,0,0,0,11.64-9.06L128,112l27.67,106.94A12,12,0,0,0,167.31,228H208a12,12,0,0,0,11.91-13.49ZM197.52,99.9A36,36,0,0,1,164.23,68h29.3ZM70,36H186a4,4,0,0,1,4,3.5L192.53,60H63.47L66,39.5A4,4,0,0,1,70,36ZM62.47,68h29.3A36,36,0,0,1,58.48,99.9Zm30.1,149a4,4,0,0,1-3.88,3H48a4,4,0,0,1-4-4.5L57.47,108A44.05,44.05,0,0,0,99.81,68H124V95.49ZM211,218.65a4,4,0,0,1-3,1.35H167.31a4,4,0,0,1-3.89-3.06L132,95.49V68h24.19a44.05,44.05,0,0,0,42.34,40L212,215.5A4,4,0,0,1,211,218.65Z"/></g></svg>
+            </div>
+          </div>
+
+          <p class="dress-note dress-reveal" style="--dress-delay: 480ms">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg>
+            <span id="dress-code-color-note">Ven del color que más te guste.</span>
+          </p>
+          <p class="dress-closing dress-reveal" style="--dress-delay: 560ms">Tu mejor accesorio: las ganas de celebrar.</p>
+        </div>
+      </section>
+      <!-- Quinta sección: confirmación de asistencia. Fecha límite, nombre y edad en config.js. La confirmación solo se muestra en pantalla. -->
+      <section class="rsvp-section" id="rsvp" aria-labelledby="rsvp-title">
+        <div class="rsvp-sparkles" aria-hidden="true"><svg viewBox="0 0 20 20" style="--i:0"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg><svg viewBox="0 0 20 20" style="--i:1"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg><svg viewBox="0 0 20 20" style="--i:2"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg><svg viewBox="0 0 20 20" style="--i:3"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg><svg viewBox="0 0 20 20" style="--i:4"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg><svg viewBox="0 0 20 20" style="--i:5"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg><svg viewBox="0 0 20 20" style="--i:6"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg><svg viewBox="0 0 20 20" style="--i:7"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg></div>
+        <div class="rsvp-card">
+          <div class="rsvp-envelope rsvp-reveal" style="--rsvp-delay: 0ms" aria-hidden="true">
+            <svg viewBox="0 0 120 96" fill="none">
+              <path class="rsvp-letter" pathLength="1" d="M30 52V14a3 3 0 0 1 3-3h54a3 3 0 0 1 3 3v38" />
+              <path class="rsvp-letter-lines" pathLength="1" d="M42 24h36M42 32h36M42 40h22" />
+              <path pathLength="1" d="M14 44v42a4 4 0 0 0 4 4h84a4 4 0 0 0 4-4V44" />
+              <path pathLength="1" d="M14 44 60 74l46-30" />
+              <path pathLength="1" d="M14 44 30 32m76 12L90 32" />
+              <path pathLength="1" d="M18 88l32-22m52 22L70 66" />
+              <path class="rsvp-heart" pathLength="1" d="M60 22c-2-3-7-3-7 1 0 3 4 5 7 8 3-3 7-5 7-8 0-4-5-4-7-1Z" />
+            </svg>
+          </div>
+          <h2 class="rsvp-title rsvp-reveal" id="rsvp-title" style="--rsvp-delay: 90ms">¿Brindamos juntas?</h2>
+          <p class="rsvp-text rsvp-reveal" style="--rsvp-delay: 170ms">Me encantaría contar contigo para celebrar mis <span data-rsvp-age>28</span>. Confirma tu asistencia para preparar cada detalle de esta noche.</p>
+          <p class="rsvp-deadline rsvp-reveal" style="--rsvp-delay: 240ms"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg><span>Confirma antes del <strong id="rsvp-deadline">1 de noviembre</strong>.</span></p>
+
+          <div class="rsvp-accept rsvp-reveal" style="--rsvp-delay: 320ms">
+            <button class="rsvp-button" id="rsvp-accept" type="button" aria-expanded="false" aria-controls="rsvp-form">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2Z" /></svg>
+              <span>Aceptar invitación</span>
+            </button>
+          </div>
+
+          <form class="rsvp-form" id="rsvp-form" novalidate hidden>
+            <div class="rsvp-field">
+              <label for="rsvp-name">Tu nombre</label>
+              <input id="rsvp-name" name="nombre" type="text" autocomplete="name" required maxlength="80" aria-describedby="rsvp-name-error" />
+              <p class="rsvp-error" id="rsvp-name-error" aria-live="polite"></p>
+            </div>
+            <div class="rsvp-field">
+              <label for="rsvp-message">Un mensaje para <span data-rsvp-name>Valentina</span> <span class="rsvp-optional">(opcional)</span></label>
+              <textarea id="rsvp-message" name="mensaje" rows="3" maxlength="500"></textarea>
+            </div>
+            <button class="rsvp-button rsvp-submit" type="submit">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.5 3.5 10 14M20.5 3.5 14 20.5l-4-6.5-6.5-4 17-6.5Z" /></svg>
+              <span>Enviar confirmación</span>
+            </button>
+          </form>
+
+          <div class="rsvp-thanks" id="rsvp-thanks" tabindex="-1" hidden>
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9Z" /></svg>
+            <p class="rsvp-thanks-title">¡Gracias, <span id="rsvp-guest">querida invitada</span>!</p>
+            <p class="rsvp-thanks-text">Tu asistencia quedó confirmada. <span data-rsvp-name>Valentina</span> ya cuenta contigo para brindar esta noche.</p>
+          </div>
+        </div>
+      </section>
+      <!-- Galería de Polaroids. Fotos, frases y textos en config.js. -->
+      <section class="gallery-section" id="gallery" aria-labelledby="gallery-title">
+        <div class="gallery-composition">
+          <h2 class="gallery-title gallery-reveal" id="gallery-title" style="--gallery-delay: 0ms">Momentos que me hacen sonreír</h2>
+          <p class="gallery-text gallery-reveal" id="gallery-text" style="--gallery-delay: 100ms">Un poquito de mí, antes de compartir una noche contigo.</p>
+          <div class="gallery-stack gallery-reveal" id="gallery-stack" style="--gallery-delay: 200ms" tabindex="0" role="group" aria-roledescription="galería" aria-label="Fotografías. Usa las flechas del teclado para pasarlas.">
+            <figure class="polaroid"><div class="polaroid-photo"><img src="assets/gallery/foto-1.webp" alt="Retrato de muestra sonriendo" width="720" height="720" draggable="false" decoding="async" /></div><figcaption>Siempre lista para celebrar</figcaption></figure>
+            <figure class="polaroid"><div class="polaroid-photo"><img src="assets/gallery/foto-2.webp" alt="Taza de café sobre una mesa de madera" width="720" height="720" draggable="false" decoding="async" /></div><figcaption>Mañanas de café</figcaption></figure>
+            <figure class="polaroid"><div class="polaroid-photo"><img src="assets/gallery/foto-3.webp" alt="Gato atigrado mirando a la cámara" width="720" height="720" draggable="false" decoding="async" /></div><figcaption>Mi compañía favorita</figcaption></figure>
+            <figure class="polaroid"><div class="polaroid-photo"><img src="assets/gallery/foto-4.webp" alt="Cielo lleno de estrellas y galaxias" width="720" height="720" draggable="false" decoding="async" /></div><figcaption>Soñar en grande</figcaption></figure>
+            <figure class="polaroid"><div class="polaroid-photo"><img src="assets/gallery/foto-5.webp" alt="Cohete listo para despegar al anochecer" width="720" height="720" draggable="false" decoding="async" /></div><figcaption>Nuevas aventuras</figcaption></figure>
+            <figure class="polaroid"><div class="polaroid-photo"><img src="assets/gallery/foto-6.webp" alt="Retrato de muestra en primer plano" width="720" height="720" draggable="false" decoding="async" /></div><figcaption>Una vuelta más al sol</figcaption></figure>
+          </div>
+          <p class="gallery-hint gallery-reveal" style="--gallery-delay: 300ms">Desliza las fotos hacia los lados</p>
+          <p class="sr-only" id="gallery-status" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <!-- Sexta sección: despedida. Textos y nombre en config.js. -->
+      <section class="farewell-section" id="farewell" aria-labelledby="farewell-title">
+        <div class="farewell-composition">
+          <svg class="farewell-cake farewell-reveal" style="--farewell-delay: 0ms" viewBox="0 0 120 112" fill="none" aria-hidden="true">
+            <path pathLength="1" d="M42 30c-2-3 0-7 2-9 2 2 4 6 2 9a2.2 2.2 0 0 1-4 0Zm16-4c-2-3 0-7 2-9 2 2 4 6 2 9a2.2 2.2 0 0 1-4 0Zm16 4c-2-3 0-7 2-9 2 2 4 6 2 9a2.2 2.2 0 0 1-4 0Z" />
+            <path pathLength="1" d="M44 34v14m16-18v18m16-14v14" />
+            <path pathLength="1" d="M34 48h52a4 4 0 0 1 4 4v18H30V52a4 4 0 0 1 4-4Z" />
+            <path pathLength="1" d="M30 57c5 5 9 5 13 0s9-5 13 0 9 5 13 0 9-5 13 0 7 4 8 1" />
+            <path pathLength="1" d="M22 70h76a4 4 0 0 1 4 4v20H18V74a4 4 0 0 1 4-4Z" />
+            <path pathLength="1" d="M18 81c6 6 11 6 17 0s11-6 17 0 11 6 17 0 11-6 17 0 11 5 16 1" />
+            <path pathLength="1" d="M8 98h104M14 98c4 6 10 8 46 8s42-2 46-8" />
+          </svg>
+          <h2 class="farewell-title farewell-reveal" id="farewell-title" style="--farewell-delay: 120ms">Lo mejor será compartirlo contigo</h2>
+          <p class="farewell-text farewell-reveal" id="farewell-text" style="--farewell-delay: 220ms">Una nueva vuelta al sol, muchos deseos por cumplir y una noche para crear recuerdos con las personas que quiero.</p>
+          <p class="farewell-highlight farewell-reveal" style="--farewell-delay: 320ms"><span id="farewell-highlight">¡Nos vemos para celebrar!</span></p>
+          <p class="farewell-signature farewell-reveal" style="--farewell-delay: 420ms"><span id="farewell-sign-off">Con cariño,</span><span class="farewell-name" data-farewell-name>Valentina</span></p>
+          <svg class="farewell-bow farewell-reveal" style="--farewell-delay: 520ms" viewBox="0 0 150 170" fill="none" aria-hidden="true">
+            <path pathLength="1" d="M76 61C61 47 16 18 15 44c-1 23 44 20 61 17ZM77 60c7-23 38-55 49-35 13 25-35 39-49 35Z" />
+            <path pathLength="1" d="M75 62c-12 17-25 31-20 56 3 14 3 25-4 39M79 62c6 20 33 20 30 48-2 15-5 28 3 42" />
+            <path pathLength="1" d="M73 56c-4 5-1 11 5 11 5 0 8-6 5-10-2-4-7-5-10-1ZM71 58C51 37 23 30 19 43m61 15c14-17 39-28 45-30M70 69c-11 23-14 33-10 48m24-50c6 17 28 29 21 44" />
+          </svg>
+        </div>
+        <p class="farewell-credit">Diseñado por <a href="https://rotfstudio.com/" target="_blank" rel="noopener">Rotf Studio</a></p>
       </section>
     </main>
 

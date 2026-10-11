@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "node scripts/serve.mjs",
-    "check": "node --check dist/app.js && node --check dist/config.js && node --check dist/welcome.js && node --test tests/countdown.test.mjs",
+    "check": "node --check dist/app.js && node --check dist/config.js && node --check dist/welcome.js && node --check dist/event-details.js && node --test tests/*.test.mjs",
     "music": "node scripts/create-music.mjs"
   }
 }
