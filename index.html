@@ -1,0 +1,7 @@
+---
+layout: null
+---
+{%- capture invitation -%}
+{%- include_relative dist/index.html -%}
+{%- endcapture -%}
+{{- invitation | replace: '<head>', '<head><base href="./dist/">' -}}
